@@ -32,6 +32,9 @@ gem "dotenv-rails"
 gem "bootstrap", "~> 5.3"
 gem "slim-rails"
 gem "minitest", "~> 5.25"
+gem "omniauth"
+gem "omniauth-github"
+gem "octokit"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

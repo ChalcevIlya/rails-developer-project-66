@@ -1,7 +1,12 @@
-h1.text-center.mt-5 Анализатор Репозиториев
+h1.text-center.mt-5 Repository Analizer
 p.text-center.text-muted.mt-3
-  | Автоматически следит за качеством репозиториев на GitHub.
+  | Automatically monitors the quality of GitHub repositories.
   br
-  | Отслеживает изменения, прогоняет их через встроенные анализаторы,
+  | Tracks changes, runs them through built-in analyzers,
   br
-  | формирует отчёты и отправляет их вам.
+  | generates reports and sends them to you.
+
+- unless logged_in?
+  .text-center.mt-4
+    = link_to "Log in through GitHub", "/auth/github",
+        class: "btn btn-dark btn-lg"
