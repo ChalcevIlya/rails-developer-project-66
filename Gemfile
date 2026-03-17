@@ -29,7 +29,7 @@ gem "jbuilder"
 
 gem "honeybadger"
 gem "dotenv-rails"
-gem 'slim-rails'
+gem "slim-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -50,7 +50,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'slim_lint'
+  gem "slim_lint"
 end
 
 group :development do
