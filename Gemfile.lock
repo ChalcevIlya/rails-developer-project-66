@@ -83,6 +83,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
+    bootstrap (5.3.8)
+      popper_js (>= 2.11.8, < 3)
     brakeman (8.0.4)
       racc
     builder (3.3.0)
@@ -151,9 +153,7 @@ GEM
     mcp (0.8.0)
       json-schema (>= 4.1)
     mini_mime (1.1.5)
-    minitest (6.0.2)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     msgpack (1.8.0)
     net-imap (0.6.3)
       date
@@ -173,6 +173,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.3-x86_64-linux)
+    popper_js (2.11.8)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -327,6 +328,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap (~> 5.3)
   brakeman
   capybara
   cssbundling-rails
@@ -335,6 +337,7 @@ DEPENDENCIES
   honeybadger
   jbuilder
   jsbundling-rails
+  minitest (~> 5.25)
   pg
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
