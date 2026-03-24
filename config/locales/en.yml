@@ -28,4 +28,28 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  flash:
+    log_in_req: You must log in
+  sessions:
+    create:
+      logged_in: "Logged in as %{nickname}"
+    destroy:
+      logged_out: Logged out
+  repositories:
+    create:
+      success: Repository was successfully added
+      repo_not_found: Repository not found on GitHub
+    index:
+      title: Repositories List
+      add_repository: Add repository
+      name: Name
+      language: Language
+      clone_url: Clone url
+      ssh_url: Ssh url
+      no_repositories: No repositories added yet
+    new:
+      title: Add Repository
+      repository: Repository
+      select_repository: Select a repository...
+      submit: Add
+      back: Back to list

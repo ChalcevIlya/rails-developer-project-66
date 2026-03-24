@@ -1,6 +1,15 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require_relative 'helpers/sign_in_helper'
+require 'rails/test_help'
+require 'minitest/power_assert'
+require 'minitest/mock'
+require 'ostruct'
+
+OmniAuth.config.test_mode = true
+ActiveSupport.on_load(:action_dispatch_integration_test) { include SignInHelper }
 
 module ActiveSupport
   class TestCase

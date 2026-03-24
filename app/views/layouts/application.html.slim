@@ -1,21 +1,22 @@
 doctype html
 html
   head
-    title = content_for(:title) || "Repository Analizer"
-    meta name="viewport" content="width=device-width,initial-scale=1"
-    meta name="apple-mobile-web-app-capable" content="yes"
+    title = 'Repository Analizer'
+    meta name='turbo-prefetch' content='false'
+    meta name='viewport' content='width=device-width,initial-scale=1'
+    meta name='apple-mobile-web-app-capable' content='yes'
     = csrf_meta_tags
     = csp_meta_tag
 
     = yield :head
 
-    link rel="manifest" href="/manifest.json"
-    link rel="icon" href="/icon.png" type="image/png"
-    link rel="icon" href="/icon.svg" type="image/svg+xml"
-    link rel="apple-touch-icon" href="/icon.png"
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload",
-      type: "module"
+    link rel='manifest' href='/manifest.json'
+    link rel='icon' href='/icon.png' type='image/png'
+    link rel='icon' href='/icon.svg' type='image/svg+xml'
+    link rel='apple-touch-icon' href='/icon.png'
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload',
+      type: 'module'
 
   body
     nav.navbar.navbar-expand.navbar-dark.bg-dark.mb-4
@@ -23,12 +24,21 @@ html
         a.navbar-brand href=root_path Repository Analizer
         .navbar-nav.ms-auto
           - if logged_in?
+            = link_to t('Repo List'), repositories_path, class: 'nav-link me-3'
             span.navbar-text.me-3 = current_user.nickname
-            = link_to "Log out", session_path,
-              data: { turbo_method: :delete }, class: "nav-link"
+            = link_to 'Log out', session_path,
+              data: { turbo_method: :delete }, class: 'nav-link'
           - else
-            = link_to "Log in through GitHub", "/auth/github",
-              class: "nav-link"
+            = link_to 'Log in through GitHub', '/auth/github',
+              class: 'nav-link'
 
     .container
+      - if flash[:notice]
+        .alert.alert-success.alert-dismissible.fade.show role='alert'
+          = flash[:notice]
+          button.btn-close type='button' data-bs-dismiss='alert'
+      - if flash[:alert]
+        .alert.alert-danger.alert-dismissible.fade.show role='alert'
+          = flash[:alert]
+          button.btn-close type='button' data-bs-dismiss='alert'
       = yield

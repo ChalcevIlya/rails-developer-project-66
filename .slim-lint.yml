@@ -1,0 +1,12 @@
+---
+
+exclude:
+  - vendor/*
+  - node_modules/*
+  - '**/devise/**/*.slim'
+
+linters:
+  RuboCop:
+    config_file: .rubocop.yml
+  LineLength:
+    max: 180

@@ -1,0 +1,25 @@
+h1.mb-4 = 'Repositories List'
+
+= link_to 'Add repository', new_repository_path, class: 'btn btn-primary mb-3'
+
+- if @repositories.any?
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead.table-primary
+        tr
+          th = 'Name'
+          th = 'Language'
+          th = 'Clone url'
+          th = 'Ssh url'
+      tbody
+        - @repositories.each do |repository|
+          tr
+            td = repository.full_name
+            td
+              span.badge.bg-secondary = repository.language
+            td
+              code = repository.clone_url
+            td
+              code = repository.ssh_url
+- else
+  .alert.alert-info = 'No Repositories'

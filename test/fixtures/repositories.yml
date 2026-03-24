@@ -1,0 +1,8 @@
+one:
+  name: test-repo
+  github_id: 123456
+  full_name: Test/test-repo
+  language: Ruby
+  clone_url: https://github.com/Test/test-repo.git
+  ssh_url: git@github.com:Test/test-repo.git
+  user: one
