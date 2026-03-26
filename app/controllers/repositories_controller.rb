@@ -7,6 +7,11 @@ class RepositoriesController < ApplicationController
     @repositories = current_user.repositories.order(created_at: :desc)
   end
 
+  def show
+    @repository = current_user.repositories.find(params[:id])
+    @checks = @repository.checks.order(created_at: :desc)
+  end
+
   def new
     @repository = current_user.repositories.build
     @github_repos = fetch_github_repos
@@ -42,16 +47,14 @@ class RepositoriesController < ApplicationController
   private
 
   def fetch_github_repos
-    client = Octokit::Client.new(access_token: current_user.token, auto_paginate: true)
-    client.repos.select { |repo| repo.language&.downcase == 'ruby' }
+    github_client.repos.select { |repo| repo.language&.downcase == 'ruby' }
   rescue Octokit::Error => e
     Rails.logger.error("GitHub API error: #{e.message}")
     []
   end
 
   def find_github_repo(github_id)
-    client = Octokit::Client.new(access_token: current_user.token, auto_paginate: true)
-    client.repos.find { |repo| repo.id == github_id }
+    github_client.repos.find { |repo| repo.id == github_id }
   rescue Octokit::Error => e
     Rails.logger.error("GitHub API error: #{e.message}")
     []

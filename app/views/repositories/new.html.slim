@@ -1,4 +1,4 @@
-h1.mb-4 = 'Add new repo'
+h1.mb-4 = t('.title')
 
 .row
   .col-md-8.col-lg-6
@@ -10,11 +10,11 @@ h1.mb-4 = 'Add new repo'
               li = message
 
       .mb-3
-        = f.label :github_id, 'Repository', class: 'form-label'
+        = f.label :github_id, t('.repository'), class: 'form-label'
         = f.select :github_id,
             @github_repos.map { |repo| ["#{repo.full_name} (#{repo.language})", repo.id] },
-            { include_blank: 'Select repository' },
+            { include_blank: t('.select_repository') },
             class: 'form-select'
 
-      = f.submit 'Submit', class: 'btn btn-primary me-2'
-      = link_to 'Back', repositories_path, class: 'btn btn-outline-secondary'
+      = f.submit t('.submit'), class: 'btn btn-primary me-2'
+      = link_to t('.back'), repositories_path, class: 'btn btn-outline-secondary'

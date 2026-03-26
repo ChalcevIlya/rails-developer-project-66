@@ -1,25 +1,27 @@
-h1.mb-4 = 'Repositories List'
+h1.mb-4 = t('.title')
 
-= link_to 'Add repository', new_repository_path, class: 'btn btn-primary mb-3'
+= link_to t('.add_repository'), new_repository_path, class: 'btn btn-primary mb-3'
 
 - if @repositories.any?
   .table-responsive
     table.table.table-striped.table-hover
       thead.table-primary
         tr
-          th = 'Name'
-          th = 'Language'
-          th = 'Clone url'
-          th = 'Ssh url'
+          th = t('.name')
+          th = t('.language')
+          th = t('clone_url')
+          th = t('.ssh_url')
+          th = t('.last_check_status')
       tbody
         - @repositories.each do |repository|
           tr
-            td = repository.full_name
+            td = link_to repository.full_name, repository_path(repository)
             td
               span.badge.bg-secondary = repository.language
             td
               code = repository.clone_url
             td
               code = repository.ssh_url
+            td = repository.checks.order(created_at: :desc).first&.aasm_state || '—'
 - else
-  .alert.alert-info = 'No Repositories'
+  .alert.alert-info = t('.no_repositories')

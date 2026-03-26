@@ -29,8 +29,10 @@ gem 'jbuilder'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
+gem 'aasm'
 gem 'bootstrap', '~> 5.3'
 gem 'dotenv-rails'
+gem 'dry-container'
 gem 'enumerize'
 gem 'honeybadger'
 gem 'minitest', '~> 5.25'
@@ -71,6 +73,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'webmock'
 end
 
 group :production do

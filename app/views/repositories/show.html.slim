@@ -1,0 +1,25 @@
+h1 = @repository.full_name
+
+p = @repository.language
+
+= button_to t('.run_check'), repository_checks_path(@repository), method: :post, class: 'btn btn-primary'
+
+h2 = t('.checks')
+
+- if @checks.any?
+  table.table
+    thead
+      tr
+        th Commit
+        th = t('.status')
+        th = t('.created_at')
+        th
+    tbody
+      - @checks.each do |check|
+        tr
+          td = check.commit_id
+          td = check.aasm_state
+          td = l(check.created_at, format: :short)
+          td = link_to t('.more'), repository_check_path(@repository, check)
+- else
+  p = t('.no_checks')

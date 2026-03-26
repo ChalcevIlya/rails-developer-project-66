@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t('flash.log_in_req')
     redirect_to root_path
   end
+
+  def github_client
+    client = ApplicationContainer[:github_client]
+    client.new(current_user.token)
+  end
 end

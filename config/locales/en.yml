@@ -46,6 +46,7 @@ en:
       language: Language
       clone_url: Clone url
       ssh_url: Ssh url
+      last_check_status: Last check status
       no_repositories: No repositories added yet
     new:
       title: Add Repository
@@ -53,3 +54,21 @@ en:
       select_repository: Select a repository...
       submit: Add
       back: Back to list
+    show:
+      run_check: Run check
+      checks: Checks
+      status: Status
+      created_at: Created at
+      more: More
+      no_checks: No checks yet
+    checks:
+      create:
+        check_started: Check started
+      show:
+        check: Check
+        repository: Repository
+        commit: Commit
+        status: Status
+        result: Result
+        no_result: No result yet
+        back: Back to repository

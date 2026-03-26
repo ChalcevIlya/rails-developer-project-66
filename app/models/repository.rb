@@ -6,6 +6,7 @@ class Repository < ApplicationRecord
   enumerize :language, in: %i[Ruby], predicates: true
 
   belongs_to :user
+  has_many :checks, dependent: :destroy
 
   validates :name, presence: true
   validates :github_id, presence: true, uniqueness: true

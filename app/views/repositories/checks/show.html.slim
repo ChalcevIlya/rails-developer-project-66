@@ -1,0 +1,20 @@
+h1 = "#{t('.check')} ##{@check.id}"
+
+dl
+  dt = t('.repository')
+  dd = @repository.full_name
+
+  dt = t('.commit')
+  dd = @check.commit_id
+
+  dt = t('.status')
+  dd = @check.aasm_state
+
+  dt = t('.result')
+  dd
+    - if @check.result.present?
+      pre = @check.result
+    - else
+      pre = t('.no_result')
+
+= link_to t('.back'), repository_path(@repository)
