@@ -37,7 +37,6 @@ class CheckRepoService
     @check.start_check!
 
     lint_runner = ApplicationContainer[:lint_runner]
-    Rails.root.join('.rubocop.yml').to_s
     output, _exit_status = lint_runner.run(@cloned_repo_path, @repository.language)
 
     @check.update!(result: output)
