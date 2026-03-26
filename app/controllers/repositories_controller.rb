@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RepositoriesController < ApplicationController
+  SUPPORTED_LANGUAGES = %w[ruby javascript].freeze
   before_action :authenticate_user!
 
   def index
@@ -47,7 +48,7 @@ class RepositoriesController < ApplicationController
   private
 
   def fetch_github_repos
-    github_client.repos.select { |repo| repo.language&.downcase == 'ruby' }
+    github_client.repos.select { |repo| SUPPORTED_LANGUAGES.include?(repo.language&.downcase) }
   rescue Octokit::Error => e
     Rails.logger.error("GitHub API error: #{e.message}")
     []

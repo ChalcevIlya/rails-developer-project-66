@@ -12,6 +12,14 @@ class GithubClientStub
         language: 'Ruby',
         clone_url: 'https://github.com/user/test-repo.git',
         ssh_url: 'git@github.com:user/test-repo.git'
+      ),
+      OpenStruct.new(
+        id: 789_012,
+        name: 'test-js-repo',
+        full_name: 'user/test-js-repo',
+        language: 'JavaScript',
+        clone_url: 'https://github.com/user/test-js-repo.git',
+        ssh_url: 'git@github.com:user/test-js-repo.git'
       )
     ]
   end
