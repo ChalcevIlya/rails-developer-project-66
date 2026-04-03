@@ -1,12 +1,6 @@
-h1.text-center.mt-5 Repository Analizer
-p.text-center.text-muted.mt-3
-  | Automatically monitors the quality of GitHub repositories.
-  br
-  | Tracks changes, runs them through built-in analyzers,
-  br
-  | generates reports and sends them to you.
+h1.text-center.mt-5 = t('.title')
+p.text-center.text-muted.mt-3 = t('.description')
 
 - unless logged_in?
   .text-center.mt-4
-    = link_to 'Log in through GitHub', '/auth/github',
-        class: 'btn btn-dark btn-lg'
+    = link_to t('.login'), '/auth/github', class: 'btn btn-dark btn-lg'

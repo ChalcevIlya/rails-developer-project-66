@@ -50,6 +50,17 @@ class RepositoriesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should get show' do
+    sign_in @user
+    get repository_url(@repository)
+    assert_response :success
+  end
+
+  test 'should redirect show when not logged in' do
+    get repository_url(@repository)
+    assert_redirected_to root_path
+  end
+
   test 'should see only owned repositories' do
     other_repo = Repository.create!(
       name: 'other-repo', github_id: 777_777,

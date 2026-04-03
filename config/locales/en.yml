@@ -28,6 +28,16 @@
 #       enabled: "ON"
 
 en:
+  app_name: Repository Analyzer
+  home:
+    index:
+      title: Repository Analyzer
+      description: Automatically monitors the quality of GitHub repositories. Tracks changes, runs them through built-in analyzers, generates reports and sends them to you.
+      login: Log in through GitHub
+  layout:
+    navbar:
+      logout: Log out
+      login: Log in through GitHub
   flash:
     log_in_req: You must log in
   sessions:
