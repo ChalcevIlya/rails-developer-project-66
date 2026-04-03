@@ -28,5 +28,9 @@ class GithubClientStub
     'testsha123456shatest'
   end
 
+  def hooks(_full_name)
+    []
+  end
+
   def create_webhook(_full_name, _url); end
 end

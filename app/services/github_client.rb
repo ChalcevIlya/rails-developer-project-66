@@ -12,13 +12,13 @@ class GithubClient
   end
 
   def create_webhook(full_name, url)
+    return if @client.hooks(full_name).any? { |h| h.config.url == url }
+
     @client.create_hook(
       full_name,
       'web',
       { url: url, content_type: 'json' },
       { events: ['push'], active: true }
     )
-  rescue Octokit::UnprocessableEntity
-    # webhook already exists
   end
 end
