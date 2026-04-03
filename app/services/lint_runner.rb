@@ -17,7 +17,8 @@ class LintRunner
     rubocop_path = Gem.bin_path('rubocop', 'rubocop')
     command = "#{rubocop_path} #{repo_path} --config #{config_path} --format json"
 
-    stdout, _stderr, status = Open3.capture3(command)
+    stdout, stderr, status = Open3.capture3(command)
+    Rails.logger.error("RuboCop stderr: #{stderr}") if stderr.present?
     [stdout, status.exitstatus]
   end
 
