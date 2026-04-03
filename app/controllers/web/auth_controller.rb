@@ -3,6 +3,8 @@
 class Web::AuthController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
+    return redirect_to root_path unless auth
+
     user = User.find_or_initialize_by(email: auth['info']['email'])
 
     user.nickname = auth['info']['nickname']

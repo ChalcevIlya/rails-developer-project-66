@@ -5,7 +5,7 @@ class Repository::Check < ApplicationRecord
 
   belongs_to :repository
 
-  validates :commit_id, presence: true
+  validates :commit_id, presence: true, allow_nil: true
 
   aasm do
     state :created, initial: true
