@@ -10,4 +10,13 @@ class GithubClient
   def last_commit(full_name, branch = 'main')
     @client.commits(full_name, branch).first.sha
   end
+
+  def create_webhook(full_name, url)
+    @client.create_hook(
+      full_name,
+      'web',
+      { url: url, content_type: 'json' },
+      { events: ['push'], active: true }
+    )
+  end
 end

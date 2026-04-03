@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
   delete '/session', to: 'sessions#destroy', as: :session
 
+  namespace :api do
+    resources :checks, only: %i[create]
+  end
+
   resources :repositories, only: %i[index show new create] do
     resources :checks, only: %i[create show],
                        controller: 'repositories/checks'

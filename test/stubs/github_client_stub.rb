@@ -27,4 +27,6 @@ class GithubClientStub
   def last_commit(_full_name, _branch = 'main')
     'testsha123456shatest'
   end
+
+  def create_webhook(_full_name, _url); end
 end

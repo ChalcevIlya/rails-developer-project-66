@@ -37,6 +37,8 @@ class RepositoriesController < ApplicationController
     )
 
     if @repository.save
+      webhook_url = Rails.application.routes.url_helpers.api_checks_url
+      github_client.create_webhook(@repository.full_name, webhook_url)
       flash[:notice] = t('.success')
       redirect_to repositories_path
     else
