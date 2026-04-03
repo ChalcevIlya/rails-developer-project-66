@@ -18,5 +18,7 @@ class GithubClient
       { url: url, content_type: 'json' },
       { events: ['push'], active: true }
     )
+  rescue Octokit::UnprocessableEntity
+    # webhook already exists
   end
 end
