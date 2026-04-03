@@ -7,8 +7,8 @@ class Web::AuthController < ApplicationController
 
     user = User.find_or_initialize_by(email: auth['info']['email'])
 
-    user.nickname = auth['info']['nickname']
-    user.token = auth['credentials']['token']
+    user.nickname = auth.dig('info', 'nickname')
+    user.token = auth.dig('credentials', 'token')
 
     user.save!
 
