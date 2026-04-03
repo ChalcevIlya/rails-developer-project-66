@@ -40,6 +40,7 @@ gem 'minitest-power_assert'
 gem 'octokit'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'rubocop'
 gem 'slim-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
