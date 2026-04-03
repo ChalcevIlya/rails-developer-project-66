@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SessionsController < ApplicationController
+class Web::AuthController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
     user = User.find_or_initialize_by(email: auth['info']['email'])

@@ -40,11 +40,12 @@ en:
       login: Log in through GitHub
   flash:
     log_in_req: You must log in
-  sessions:
-    create:
-      logged_in: "Logged in as %{nickname}"
-    destroy:
-      logged_out: Logged out
+  web:
+    auth:
+      create:
+        logged_in: "Logged in as %{nickname}"
+      destroy:
+        logged_out: Logged out
   repositories:
     create:
       success: Repository was successfully added

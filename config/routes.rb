@@ -3,8 +3,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get '/auth/github/callback', to: 'sessions#create'
-  delete '/session', to: 'sessions#destroy', as: :session
+  get '/auth/github/callback', to: 'web/auth#create'
+  delete '/session', to: 'web/auth#destroy', as: :session
 
   namespace :api do
     resources :checks, only: %i[create]

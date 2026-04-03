@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
+class Web::AuthControllerTest < ActionDispatch::IntegrationTest
   test 'should login github' do
     sign_in users(:one)
     assert_redirected_to root_path
