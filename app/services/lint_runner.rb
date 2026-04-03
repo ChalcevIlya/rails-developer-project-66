@@ -14,7 +14,8 @@ class LintRunner
 
   def self.run_rubocop(repo_path)
     config_path = Rails.root.join('.rubocop.yml').to_s
-    command = "rubocop #{repo_path} --config #{config_path} --format json"
+    rubocop_path = Gem.bin_path('rubocop', 'rubocop')
+    command = "#{rubocop_path} #{repo_path} --config #{config_path} --format json"
 
     stdout, _stderr, status = Open3.capture3(command)
     [stdout, status.exitstatus]
