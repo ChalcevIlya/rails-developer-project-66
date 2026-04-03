@@ -14,6 +14,7 @@ class CheckRepoService
   rescue StandardError => e
     Rails.logger.error("Check failed: #{e.message}")
     Rails.logger.error(e.backtrace.first(5).join("\n"))
+    @check.update!(passed: false)
     @check.fail!
     CheckMailer.failure_mail(@check).deliver_later
   ensure
@@ -40,14 +41,14 @@ class CheckRepoService
     lint_runner = ApplicationContainer[:lint_runner]
     output, _exit_status = lint_runner.run(@cloned_repo_path, @repository.language)
 
-    @check.update!(result: output)
+    @check.update!(result: output, passed: !offenses_in_check?(output))
     @check.finish_check!
 
-    CheckMailer.failure_mail(@check).deliver_later if offenses_in_check?
+    CheckMailer.failure_mail(@check).deliver_later unless @check.passed?
   end
 
-  def offenses_in_check?
-    result = JSON.parse(@check.result)
+  def offenses_in_check?(output)
+    result = JSON.parse(output)
     result['offenses_count'].to_i.positive?
   rescue JSON::ParserError
     false

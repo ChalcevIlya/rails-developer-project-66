@@ -68,6 +68,7 @@ en:
     show:
       run_check: Run check
       checks: Checks
+      passed: Passed
       status: Status
       created_at: Created at
       more: More
@@ -80,6 +81,7 @@ en:
         repository: Repository
         commit: Commit
         status: Status
+        passed: Passed
         result: Result
         no_result: No result yet
         back: Back to repository

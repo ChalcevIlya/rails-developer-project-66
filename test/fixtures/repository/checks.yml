@@ -4,4 +4,5 @@ one:
   repository: one
   commit_id: testsha123
   aasm_state: created
-  result: 
+  passed: false
+  result:

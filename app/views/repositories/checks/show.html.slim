@@ -10,6 +10,9 @@ dl
   dt = t('.status')
   dd = @check.aasm_state
 
+  dt = t('.passed')
+  dd = @check.passed?
+
   dt = t('.result')
   dd
     - if @check.result.present?
