@@ -1,0 +1,13 @@
+h2 = t('.heading')
+
+p
+  | #{t('.commit')}
+  strong = " #{@check.commit_id}"
+
+p
+  | #{t('.status')}
+  strong = " #{@check.aasm_state}"
+
+- if @check.result.present?
+  p = t('.result')
+  pre = @check.result

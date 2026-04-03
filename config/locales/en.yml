@@ -72,3 +72,10 @@ en:
         result: Result
         no_result: No result yet
         back: Back to repository
+  check_mailer:
+    failure_mail:
+      subject: "Check failed for repository %{repo}"
+      heading: Check failed
+      commit: "Commit:"
+      status: "Status:"
+      result: "Linter output:"

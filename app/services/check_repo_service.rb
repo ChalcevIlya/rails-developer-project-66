@@ -15,6 +15,7 @@ class CheckRepoService
     Rails.logger.error("Check failed: #{e.message}")
     Rails.logger.error(e.backtrace.first(5).join("\n"))
     @check.fail!
+    CheckMailer.failure_mail(@check).deliver_later
   ensure
     cleanup
   end
@@ -41,6 +42,15 @@ class CheckRepoService
 
     @check.update!(result: output)
     @check.finish_check!
+
+    CheckMailer.failure_mail(@check).deliver_later if offenses_in_check?
+  end
+
+  def offenses_in_check?
+    result = JSON.parse(@check.result)
+    result['offenses_count'].to_i.positive?
+  rescue JSON::ParserError
+    false
   end
 
   def cleanup
