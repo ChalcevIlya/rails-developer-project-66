@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get '/auth/github', to: proc { [404, {}, []] }, as: :auth_request
+  get '/auth/github', to: proc { [302, { 'Location' => '/auth/github/callback' }, []] }, as: :auth_request
   get '/auth/github/callback', to: 'web/auth#create', as: :callback_auth
   delete '/session', to: 'web/auth#destroy', as: :session
 

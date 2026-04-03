@@ -12,7 +12,7 @@ class Repository::Check < ApplicationRecord
     state :fetching
     state :fetched
     state :checking
-    state :checked
+    state :finished
     state :failed
 
     event :start_fetch do
@@ -28,7 +28,7 @@ class Repository::Check < ApplicationRecord
     end
 
     event :finish_check do
-      transitions from: :checking, to: :checked
+      transitions from: :checking, to: :finished
     end
 
     event :fail do

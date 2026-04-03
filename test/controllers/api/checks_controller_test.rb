@@ -23,7 +23,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     check = @repository.checks.last
     assert { check.commit_id == 'hookSHA' }
-    assert { check.aasm_state == 'checked' }
+    assert { check.aasm_state == 'finished' }
     assert { JSON.parse(check.result)['offenses_count'].zero? }
   end
 

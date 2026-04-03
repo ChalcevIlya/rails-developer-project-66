@@ -19,7 +19,7 @@ class Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     check = @repository.checks.last
     assert { check.commit_id == 'testsha123456shatest' }
-    assert { check.aasm_state == 'checked' }
+    assert { check.aasm_state == 'finished' }
     assert { check.result.present? }
   end
 
@@ -35,7 +35,7 @@ class Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     check = @repository.checks.create!(
       commit_id: 'testcommitid',
-      aasm_state: 'checked',
+      aasm_state: 'finished',
       result: '{"offenses_count": 0}'
     )
 
