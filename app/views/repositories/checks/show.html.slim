@@ -13,8 +13,14 @@ dl
   dt = t('.result')
   dd
     - if @check.result.present?
-      pre = @check.result
+      - result = JSON.parse(@check.result)
+      p = t('.offenses', count: result['offenses_count'])
+      - result['files']&.each do |file|
+        h5 = file['path']
+        ul
+          - file['offenses'].each do |offense|
+            li = "#{offense['line']}: [#{offense['cop_name']}] #{offense['message']}"
     - else
-      pre = t('.no_result')
+      p = t('.no_result')
 
 = link_to t('.back'), repository_path(@repository)

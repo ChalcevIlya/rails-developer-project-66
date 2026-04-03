@@ -72,6 +72,7 @@ en:
         result: Result
         no_result: No result yet
         back: Back to repository
+        offenses: "Offenses found: %{count}"
   check_mailer:
     failure_mail:
       subject: "Check failed for repository %{repo}"

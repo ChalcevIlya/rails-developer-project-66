@@ -4,7 +4,7 @@ class LintRunnerStub
   def self.run(_repo_path, _language = nil)
     result = {
       offenses_count: 0,
-      output: []
+      files: []
     }
     [result.to_json, 0]
   end
