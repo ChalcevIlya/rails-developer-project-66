@@ -8,6 +8,6 @@ module SignInHelper
       info: { email: user.email, nickname: user.nickname },
       credentials: { token: user.token || 'fake_token' }
     )
-    get callback_auth_path
+    get callback_auth_path('github')
   end
 end

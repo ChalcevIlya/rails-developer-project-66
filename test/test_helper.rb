@@ -9,6 +9,7 @@ require_relative 'stubs/lint_runner_stub'
 require_relative 'stubs/repo_cloner_stub'
 
 require 'rails/test_help'
+require 'faker'
 require 'minitest/power_assert'
 require 'minitest/mock'
 require 'ostruct'
