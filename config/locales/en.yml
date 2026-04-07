@@ -50,6 +50,7 @@ en:
     create:
       success: Repository was successfully added
       repo_not_found: Repository not found on GitHub
+      already_added: Repository has already been added
     index:
       title: Repositories List
       add_repository: Add repository

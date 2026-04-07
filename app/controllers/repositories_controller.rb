@@ -36,6 +36,12 @@ class RepositoriesController < ApplicationController
       ssh_url: github_repo.ssh_url
     )
 
+    if current_user.repositories.exists?(github_id: github_repo.id)
+      flash[:alert] = t('.already_added')
+      redirect_to new_repository_path
+      return
+    end
+
     if @repository.save
       webhook_url = Rails.application.routes.url_helpers.api_checks_url
       github_client.create_webhook(@repository.full_name, webhook_url)

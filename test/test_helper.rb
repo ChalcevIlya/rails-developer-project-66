@@ -4,9 +4,6 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require_relative '../config/environment'
 require_relative 'helpers/sign_in_helper'
-require_relative 'stubs/github_client_stub'
-require_relative 'stubs/lint_runner_stub'
-require_relative 'stubs/repo_cloner_stub'
 
 require 'rails/test_help'
 require 'faker'

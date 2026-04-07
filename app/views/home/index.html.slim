@@ -3,4 +3,4 @@ p.text-center.text-muted.mt-3 = t('.description')
 
 - unless logged_in?
   .text-center.mt-4
-    = link_to t('.login'), '/auth/github', class: 'btn btn-dark btn-lg'
+    = button_to t('.login'), auth_request_path(:github), method: :post, class: 'btn btn-dark btn-lg', data: { turbo: false }
