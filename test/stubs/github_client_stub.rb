@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GithubClientStub
-  Repo = Struct.new(:id, :name, :full_name, :language, :clone_url, :ssh_url, keyword_init: true)
+  Repo = Struct.new(:id, :name, :full_name, :language, :clone_url, :ssh_url)
 
   REPOS = [
     Repo.new(
