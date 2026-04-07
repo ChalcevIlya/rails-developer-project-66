@@ -1,29 +1,31 @@
 # frozen_string_literal: true
 
-require 'ostruct'
-
 class GithubClientStub
+  Repo = Struct.new(:id, :name, :full_name, :language, :clone_url, :ssh_url, keyword_init: true)
+
+  REPOS = [
+    Repo.new(
+      id: 453_780,
+      name: 'test-repo',
+      full_name: 'user/test-repo',
+      language: 'Ruby',
+      clone_url: 'https://github.com/user/test-repo.git',
+      ssh_url: 'git@github.com:user/test-repo.git'
+    ),
+    Repo.new(
+      id: 789_012,
+      name: 'test-js-repo',
+      full_name: 'user/test-js-repo',
+      language: 'JavaScript',
+      clone_url: 'https://github.com/user/test-js-repo.git',
+      ssh_url: 'git@github.com:user/test-js-repo.git'
+    )
+  ].freeze
+
   def initialize(_token = nil); end
 
   def repos
-    [
-      OpenStruct.new(
-        id: 453_780,
-        name: 'test-repo',
-        full_name: 'user/test-repo',
-        language: 'Ruby',
-        clone_url: 'https://github.com/user/test-repo.git',
-        ssh_url: 'git@github.com:user/test-repo.git'
-      ),
-      OpenStruct.new(
-        id: 789_012,
-        name: 'test-js-repo',
-        full_name: 'user/test-js-repo',
-        language: 'JavaScript',
-        clone_url: 'https://github.com/user/test-js-repo.git',
-        ssh_url: 'git@github.com:user/test-js-repo.git'
-      )
-    ]
+    REPOS
   end
 
   def last_commit(_full_name, _branch = 'main')
@@ -32,7 +34,7 @@ class GithubClientStub
 
   def find_repo(github_id)
     repos.find { |repo| repo.id == github_id } ||
-      OpenStruct.new(
+      Repo.new(
         id: github_id,
         name: "repo-#{github_id}",
         full_name: "user/repo-#{github_id}",
