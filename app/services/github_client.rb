@@ -7,6 +7,10 @@ class GithubClient
 
   delegate :repos, to: :@client
 
+  def find_repo(github_id)
+    repos.find { |repo| repo.id == github_id }
+  end
+
   def last_commit(full_name, branch = 'main')
     @client.commits(full_name, branch).first.sha
   end

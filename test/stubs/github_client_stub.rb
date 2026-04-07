@@ -30,6 +30,18 @@ class GithubClientStub
     'testsha123456shatest'
   end
 
+  def find_repo(github_id)
+    repos.find { |repo| repo.id == github_id } ||
+      OpenStruct.new(
+        id: github_id,
+        name: "repo-#{github_id}",
+        full_name: "user/repo-#{github_id}",
+        language: 'Ruby',
+        clone_url: "https://github.com/user/repo-#{github_id}.git",
+        ssh_url: "git@github.com:user/repo-#{github_id}.git"
+      )
+  end
+
   def hooks(_full_name)
     []
   end

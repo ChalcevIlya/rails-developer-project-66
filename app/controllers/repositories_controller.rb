@@ -63,9 +63,9 @@ class RepositoriesController < ApplicationController
   end
 
   def find_github_repo(github_id)
-    github_client.repos.find { |repo| repo.id == github_id }
+    github_client.find_repo(github_id)
   rescue Octokit::Error => e
     Rails.logger.error("GitHub API error: #{e.message}")
-    []
+    nil
   end
 end
